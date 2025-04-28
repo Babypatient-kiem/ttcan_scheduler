@@ -42,6 +42,9 @@
 *.idb
 *.pdb
 
+# Python venv
+.venv/
+
 # Kernel Module Compile Results
 *.mod*
 *.cmd
@@ -51,6 +54,10 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# Build folder
+# Build folders
 build/
-cmake-build*
+cmake-build-*/
+
+# IDE folders
+.idea/
+.vscode/

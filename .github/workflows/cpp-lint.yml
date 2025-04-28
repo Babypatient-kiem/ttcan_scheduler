@@ -1,0 +1,16 @@
+name: C++ Formatting Check
+
+on: [push, pull_request]
+
+jobs:
+  cpp_formatter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Clang Formatter source-code
+        uses: DoozyX/clang-format-lint-action@v0.20
+        with:
+          clangFormatVersion: 18
+          source: "./src ./tests"

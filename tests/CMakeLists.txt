@@ -8,6 +8,8 @@ FetchContent_Declare(
 # CMake 3.14+
 FetchContent_MakeAvailable(catch2)
 
+include(Catch)
+
 FetchContent_Declare(
     fff
     GIT_REPOSITORY https://github.com/meekrosoft/fff.git
@@ -16,13 +18,8 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(fff)
 
-add_executable(scheduler_test ${CMAKE_CURRENT_LIST_DIR}/scheduler_test.cpp)
-target_link_libraries(scheduler_test ${PROJECT_NAME} Catch2 fff)
-target_compile_definitions(scheduler_test PUBLIC "FFF_GENERATE" "LWRB_DISABLE_ATOMIC")
-
-
-add_test(
-        NAME scheduler_test
-        COMMAND scheduler_test
-)
-
+add_executable(ttcan_basic_functionality basic_functionality/test_basic_functionality.cpp)
+target_link_libraries(ttcan_basic_functionality ${PROJECT_NAME} Catch2 fff)
+target_compile_definitions(ttcan_basic_functionality PUBLIC "FFF_GENERATE" "LWRB_DISABLE_ATOMIC")
+target_include_directories(${PROJECT_NAME} PUBLIC test_stubs/conf)
+catch_discover_tests(ttcan_basic_functionality)
