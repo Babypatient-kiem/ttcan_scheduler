@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 project(ttcan_scheduler C CXX)
 
-option(TTCAN_SCHEDULER_BUILD_TESTS "Enable building tests" YES)
+option(TTCAN_SCHEDULER_BUILD_TESTS "Enable building tests" NO)
 
 
 add_library(${PROJECT_NAME} ${CMAKE_CURRENT_LIST_DIR}/src/ttcan_scheduler.c)
@@ -20,5 +20,6 @@ endif()
 include(FetchContent)
 
 if(TTCAN_SCHEDULER_BUILD_TESTS)
+  enable_testing()
   add_subdirectory(tests)
 endif()
